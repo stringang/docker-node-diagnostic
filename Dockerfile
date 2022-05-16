@@ -1,6 +1,10 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y curl
+RUN apt-get update && apt-get install -y curl tzdata
+
+ENV TZ="Asia/Shanghai"
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone
 
 # https://github.com/nodesource/distributions/blob/master/README.md
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
