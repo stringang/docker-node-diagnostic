@@ -1,6 +1,9 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y curl tzdata
+RUN apt-get update && apt-get install -y \
+    curl \
+    tzdata \
+    lsof
 
 ENV TZ="Asia/Shanghai"
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
